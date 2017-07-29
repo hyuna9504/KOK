@@ -37,7 +37,7 @@ router.get('/auth', function(req, res, next) {
   });
 });
 
-router.get('/member', function (req, res) {
+router.get('/signin', function (req, res) {
    var token = req.session.token;
    var header = "Bearer " + token;
    var api_url = 'https://openapi.naver.com/v1/nid/me';
