@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var admin = require("firebase-admin");
+var admin = require('firebase-admin');
 var serviceAccount = require('../firebase_config.json');
+var path = require('path');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -11,7 +12,7 @@ admin.initializeApp({
 /* GET home page. */
 router.get('/', function(req, res, next) {
   sess = req.session;
-  res.render('index', { title: 'Express' });
+  res.sendFile(path.join(__dirname, '../public', 'index.html'))
 });
 
 module.exports = router;

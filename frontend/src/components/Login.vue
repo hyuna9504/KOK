@@ -28,10 +28,10 @@
       <button class="btn btn-outline-primary" type="button" >
         <img src="../assets/path5.png" alt="facebook img">
       </button>
-      <button class="btn btn-outline-primary naver" type="button" >
+      <button @click="naverLogin" class="btn btn-outline-primary naver" type="button" >
         <img src="../assets/path16.png" alt="naver img">
       </button>
-      <button v-on:click="naverLogin()" class="btn btn-outline-primary" type="button" >
+      <button class="btn btn-outline-primary" type="button" >
         <img src="../assets/combinedShape.png" alt="google img">
       </button>
     </div>
@@ -45,18 +45,18 @@
     name: 'login',
     data () {
       return {
-//        msg: '프로귀찮러를 위한 소비관리'
+        posts: []
       }
     },
     methods: {
-      naverLogin() {
-        console.log("Naver btn click");
-        // using JSONPlaceholder
-        this.$http
-          .get(`http://localhost:3000/users/naverlogin`, (data) => {
-            console.log(data);
-          })
-          .error((err) => console.log(err))
+      naverLogin () {
+        axios.get('/users/naverlogin')
+          .then(response => {
+            console.log(response.status);
+            if (response.status == 200) {
+              window.location="http://localhost:8080/main";
+            }
+          });
       }
     }
   }
