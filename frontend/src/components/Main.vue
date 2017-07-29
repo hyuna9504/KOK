@@ -2,8 +2,8 @@
   <v-ons-page class="main row">
     <div class="budget col">
       <div class="col btn">
-        <router-link to="/chart" class="chart"><img src="../assets/graph.png"></router-link>
-        <router-link to="/setting" class="setting"><img src="../assets/setUp.png"></router-link>
+        <router-link to="/" class="chart"><img src="../assets/graph.png"></router-link>
+        <router-link to="/" class="setting"><img src="../assets/setUp.png"></router-link>
       </div>
 
       <div class="col money">
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-//  Vue.prototype.$http = axio;
+  import axios from 'axios';
 
   export default {
     name: 'main',

@@ -6,7 +6,6 @@
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
           <div class="input-group-addon col-3">이메일</div>
           <input class="form-control align-text-bottom" type="email" placeholder="이메일을 입력하세요" id="example-text-input">
-          <button><img src="../assets/group.png" alt="x btn"></button>
         </div>
       </div>
 
@@ -14,7 +13,6 @@
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
           <div class="input-group-addon col-3">비밀번호</div>
           <input class="form-control align-text-bottom" type="password" placeholder="비밀번호를 입력하세요" id="example-search-input">
-          <button><img src="../assets/group.png" alt="x btn"></button>
         </div>
       </div>
     </form>
@@ -43,22 +41,21 @@
 
   export default {
     name: 'login',
-    data () {
-      return {
-        posts: []
-      }
+    created: function () {
+      const id = this.$route.params.id;
+      this.$http.get(`/api/boards/${id}`)
+        .then((response) => {
+          this.board = response.data;
+        });
     },
-    methods: {
-      naverLogin () {
-        axios.get('/users/naverlogin')
-          .then(response => {
-            console.log(response.status);
-            if (response.status == 200) {
-              window.location="http://localhost:8080/main";
-            }
-          });
-      }
-    }
+    data: function () {
+      return {
+        board: {},
+        msg: '아직준비안됨',
+        mainTitle: '아직준비안됨',
+        subTitle: '아직준비안됨',
+      };
+    },
   }
 </script>
 
@@ -116,5 +113,9 @@
 
   .auth-btn .naver {
     margin: 0 30px;
+  }
+
+  .btn-primary {
+    background-color: #005bf9;
   }
 </style>
