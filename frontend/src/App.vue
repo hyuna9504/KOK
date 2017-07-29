@@ -1,7 +1,6 @@
 <template>
   <v-ons-page id="app">
     <div>
-      <!--<img src="./assets/logo.png">-->
       <router-view></router-view>
     </div>
   </v-ons-page>
