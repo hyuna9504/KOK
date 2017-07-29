@@ -12,6 +12,7 @@ var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
+  watch: process.env.WEBPACK_WATCH === 'true',
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,

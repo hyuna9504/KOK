@@ -1,6 +1,7 @@
+/* index.js */
 import Vue from 'vue'
 import Router from 'vue-router'
-import VueOnsen from 'vue-onsenui';
+import VueOnsen from 'vue-onsenui'
 import Login from '@/components/Login'
 import Main from '@/components/Main'
 import Select from '@/components/Select'
@@ -33,3 +34,4 @@ export default new Router({
     }
   ]
 })
+
