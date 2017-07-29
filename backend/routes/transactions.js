@@ -50,7 +50,7 @@ router.get('/:period', function(req, res, next) {
     });
 });
 
-// router.update('/:', function(req, res, next) {
+// router.update('/', function(req, res, next) {
 //
 // });
 
