@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+var images = require('./routes/imageConnect');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var transactions = require('./routes/transactions');
@@ -32,6 +33,7 @@ app.use(session({
 app.use('/', index);
 app.use('/users', users);
 app.use('/transactions', transactions);
+app.use('/images', images);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
