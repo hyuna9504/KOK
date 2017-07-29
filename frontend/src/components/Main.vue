@@ -13,7 +13,7 @@
     </div>
 
     <div class="account col">
-      <p> {{ bank }} &nbsp {{ account }} &nbsp +</p>
+      <div> <p id="u_bank">{{ bank }}</p> &nbsp <p id="u_account">{{ account }}</p><p>&nbsp +</p></div>
     </div>
 
     <div class="history col">
@@ -31,7 +31,7 @@
       <button v-on:click="video" class="snap-btn btn btn-primary"><img src="../assets/group12.png"></button>
       <!--<button v-on:click="video" class="snap-btn" v-if="active"><img src="../assets/btCamera.png"></button>-->
 
-      <video id="video" width="100%" height="100%" autoplay></video>
+      <!--<video id="video" width="100%" height="100%" autoplay></video>-->
       <!--<canvas id="canvas" width="100%" height="100%"></canvas>-->
       <!--<button v-on:click="snap">Snap Photo</button>-->
     </div>
@@ -44,6 +44,14 @@
   export default {
     name: 'main',
     methods: {
+//      user: function () {
+//        const u_bank = document.getElementById('u_bank');
+//        const u_account = document.getElementById('u_account');
+//        this.$http.get(`/api/boards/${id}`)
+//          .then((response) => {
+//            this.board = response.data;
+//          });
+//      },
       video: function (event) {
         const video = document.getElementById('video');
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -77,6 +85,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  a {
+    text-decoration: none;
+  }
+
   .budget {
     width: 100%;
     height: 210px;
@@ -120,6 +132,7 @@
   }
 
   .account p {
+    display: inline-block;
     padding-top: 12px;
     font-weight: 500;
     color: #e9e9e9;
@@ -153,7 +166,7 @@
 
   .snap-btn {
     position: fixed;
-    top: 550px;
+    top: 530px;
     left: 140px;
     width: 100px;
     height: 100px;

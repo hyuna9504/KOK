@@ -27,7 +27,7 @@ router.get('/auth', function(req, res, next) {
 
   request.get(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      req.session.token = body.access_token;
+      req.session.token = JSON.parse(body).access_token;
       res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
       res.end(body);
     } else {
@@ -39,7 +39,6 @@ router.get('/auth', function(req, res, next) {
 
 router.get('/member', function (req, res) {
    var token = req.session.token;
-   console.log(token);
    var header = "Bearer " + token;
    var api_url = 'https://openapi.naver.com/v1/nid/me';
    var request = require('request');
@@ -49,9 +48,31 @@ router.get('/member', function (req, res) {
     };
    request.get(options, function (error, response, body) {
      if (!error && response.statusCode == 200) {
-       res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
-       res.end(body);
-       console.log(body);
+       const email = JSON.parse(body).response.email;
+       admin.database().ref('users').orderByChild('email').equalTo(email).once('value')
+         .then((user) => {
+           if (user.val() === null) {
+             console.log("new user");
+             const newRef = admin.database().ref('users').push();
+             const newKey = newRef.key;
+             const userObj = {
+               id: newKey,
+               email: email
+             };
+             newRef.set(userObj)
+               .then(() => {
+                 req.session.userId = newKey;
+                 res.status(200).json({ id: req.session.userId });
+               })
+               .catch((err) => {
+                 res.status(400).json({ err_msg: err.message });
+               });
+           } else {
+             console.log("exists");
+             req.session.userId = Object.keys(user.val())[0];
+             res.status(200).json({ id: req.session.userId });
+           }
+         });
      } else {
        console.log('error');
        if(response != null) {
@@ -73,11 +94,14 @@ router.get('/add', function(req, res, next) {
     .then(() => {
       return admin.database().ref('users').child(newKey).once('value');
     })
-    .then((snap) => res.status(200).json(snap));
+    .then((snap) => res.status(200).json(snap))
+    .catch((err) => {
+      res.status(400).json({ err_msg: err.message });
+    });
 });
 
 router.post('/account', function(req, res, next) {
-  const id = "-KqCstYTIIxeecYJa8-n"; // Todo: Should be "req.session.userId" after naver login complete
+  const id = req.session.userId;
   admin.database().ref('users').orderByChild('id').equalTo(id).once('value')
     .then((user) => {
       if (user.val() === null) {
@@ -96,14 +120,6 @@ router.post('/account', function(req, res, next) {
     .catch((err) => {
       res.status(400).json({ err_msg: err.message });
     });
-});
-
-router.get('/id', function(req, res, next) {
-  admin.database().ref('user').set({
-    username: "hi"
-  }).then((id) => {
-    res.status(200).json("hi");
-  })
 });
 
 module.exports = router;
