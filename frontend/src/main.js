@@ -3,6 +3,7 @@
 import 'onsenui/css/onsenui.css'
 import 'onsenui/css/onsen-css-components.css'
 import BootstrapVue from 'bootstrap-vue';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 import Vue from 'vue'
 import VueOnsen from 'vue-onsenui'
