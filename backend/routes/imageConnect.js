@@ -41,7 +41,7 @@ router.post('/upload', function(req, res, next) {
           }
           console.log('Analysis labels:', data);
 
-          res.status(200).json(data.Labels);
+          res.status(200).json({ image: keyName, label: data.Labels});
         })
       }
     });
