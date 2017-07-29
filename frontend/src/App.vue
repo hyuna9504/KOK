@@ -1,6 +1,6 @@
 <template>
   <v-ons-page id="app">
-    <div id="app">
+    <div>
       <!--<img src="./assets/logo.png">-->
       <router-view></router-view>
     </div>
@@ -8,27 +8,23 @@
 </template>
 
 <script>
-import HomePage from './components/Login'
+  import HomePage from './components/Login';
 
-export default {
-  name: 'app',
-}
+  export default {
+    name: 'app',
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
-  ons-splitter-side[side=left][animation=overlay] {
-    border-right: 1px solid #BBB;
-  }
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
   #app {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    /*margin-top: 130px;*/
   }
+
 </style>
