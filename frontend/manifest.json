@@ -1,0 +1,19 @@
+{
+  "name": "KOK:UNI77",
+  "short_name": "KOK",
+  "icons": [{
+    "src": "src/assets/logo.png",
+    "sizes": "64x64",
+    "type": "image/webp"
+  }, {
+    "src": "src/assets/logo.png",
+    "sizes": "64x64"
+  }, {
+    "src": "src/assets/logo.png",
+    "sizes": "128x128",
+    "density": 2
+  }],
+  "start_url": "src/start.html",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}
