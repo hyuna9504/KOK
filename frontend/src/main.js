@@ -6,11 +6,13 @@ import 'onsenui/css/onsen-css-components.css'
 import Vue from 'vue'
 import VueOnsen from 'vue-onsenui'
 import router from './router'
+import axio from 'axios'
 import App from './App'
 
 Vue.config.productionTip = false
 
 Vue.use(VueOnsen)
+Vue.prototype.$http = axio
 
 /* eslint-disable no-new */
 new Vue({
