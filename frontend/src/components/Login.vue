@@ -41,21 +41,22 @@
 
   export default {
     name: 'login',
-    created: function () {
-      const id = this.$route.params.id;
-      this.$http.get(`/api/boards/${id}`)
-        .then((response) => {
-          this.board = response.data;
-        });
-    },
-    data: function () {
+    data () {
       return {
-        board: {},
-        msg: '아직준비안됨',
-        mainTitle: '아직준비안됨',
-        subTitle: '아직준비안됨',
-      };
+        posts: []
+      }
     },
+    methods: {
+      naverLogin () {
+        axios.get('/users/naverlogin')
+          .then(response => {
+            console.log(response.status);
+            if (response.status == 200) {
+              window.location="http://localhost:8080/main";
+            }
+          });
+      }
+    }
   }
 </script>
 
@@ -70,6 +71,7 @@
   }
 
   .logo {
+    width: 169px;
     margin-bottom: 60px;
   }
 
@@ -116,6 +118,6 @@
   }
 
   .btn-primary {
-    background-color: #005bf9;
+    background-color: rgb(0, 91, 249);
   }
 </style>

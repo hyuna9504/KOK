@@ -25,7 +25,7 @@
       </div>
 
       <div class="book col">
-
+        {{ board }}
       </div>
 
       <button v-on:click="video" class="snap-btn btn btn-primary"><img src="../assets/group12.png"></button>
@@ -77,8 +77,16 @@
         bank: '농협',
         account: '012-3456-78-9',
         totalMoney: '574100',
-        date: '2017.07.29'
+        date: '2017.07.30',
+        board: {},
       }
+    },
+
+    created: function () {
+      this.$http.get(`/transactions`)
+        .then((response) => {
+          this.board = response.data;
+        });
     }
   }
 </script>
@@ -87,6 +95,10 @@
 <style scoped>
   a {
     text-decoration: none;
+  }
+
+  .main {
+    overflow-x: hidden;
   }
 
   .budget {
