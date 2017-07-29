@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import Main from '@/components/Main'
 import Select from '@/components/Select'
 import Add from '@/components/Add'
+import Add2 from '@/components/Add2'
 
 Vue.use(Router);
 Vue.use(VueOnsen);
@@ -33,6 +34,11 @@ export default new Router({
       path: '/add',
       name: 'Add',
       component: Add
+    },
+    {
+      path: '/add2',
+      name: 'Add2',
+      component: Add2
     }
   ]
 })

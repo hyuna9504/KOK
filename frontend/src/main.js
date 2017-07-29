@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import 'onsenui/css/onsenui.css'
 import 'onsenui/css/onsen-css-components.css'
+import BootstrapVue from 'bootstrap-vue';
 
 import Vue from 'vue'
 import VueOnsen from 'vue-onsenui'
@@ -13,6 +14,8 @@ Vue.config.productionTip = false
 
 Vue.use(VueOnsen)
 Vue.prototype.$http = axio
+
+Vue.use(BootstrapVue);
 
 /* eslint-disable no-new */
 new Vue({
