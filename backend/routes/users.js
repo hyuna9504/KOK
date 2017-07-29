@@ -5,7 +5,7 @@ var admin = require("firebase-admin");
 var client_id = 'SywgbqwVSP4an161TdKS';
 var client_secret = 'DhTfuacMl_';
 var state = "RANDOM_STATE";
-var redirectURI = encodeURI("http://localhost:3000/users/auth");
+var redirectURI = encodeURI("http://localhost:8080/main");
 var api_url = "";
 
 router.get('/naverlogin', function (req, res) {
