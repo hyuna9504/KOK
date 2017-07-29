@@ -25,5 +25,8 @@
     "eventsource-polyfill": "^0.9.6",
     "onsenui": "^2.5.1",
     "vue-onsenui": "^2.1.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.92.0"
   }
 }
