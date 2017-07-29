@@ -1,19 +1,19 @@
 <template>
   <v-ons-page class="add">
-    <video id="video" width="640" height="480" autoplay></video>
+    <video id="video" width="100%" height="100%" autoplay></video>
     <button v-on:click="video">Start Video</button>
-    <canvas id="canvas" width="640" height="480"></canvas>
+    <canvas id="canvas" width="100%" height="100%"></canvas>
     <button v-on:click="snap">Snap Photo</button>
     <p class="msg">{{ msg }}</p>
-    <img src="../assets/add_coffee.png" alt="coffee">
-    <p><input type="file" id="take-picture" accept="image/*"></p>
+    <!--<img src="../assets/add_coffee.png" alt="coffee">-->
+    <!--<p><input type="file" id="take-picture" accept="image/*"></p>-->
     <div class="cognitive">
       <h2>'모자'</h2>
       <p class="msg">인식결과가 맞는지 선택해주세요.</p>
     </div>
     <div class="btn">
-      <button type="button"><img src="../assets/add_o.png" alt="o"></button>
-      <button type="button"><img src="../assets/add_x.png" alt="x"></button>
+      <!--<button type="button"><img src="../assets/add_o.png" alt="o"></button>-->
+      <!--<button type="button"><img src="../assets/add_x.png" alt="x"></button>-->
     </div>
   </v-ons-page>
 </template>

@@ -28,7 +28,12 @@
 
       </div>
 
-      <button class="snap-btn"><img src="../assets/btCamera.png"></button>
+      <button v-on:click="video" class="snap-btn"><img src="../assets/btCamera.png"></button>
+      <!--<button v-on:click="video" class="snap-btn" v-if="active"><img src="../assets/btCamera.png"></button>-->
+
+      <video id="video" width="100%" height="100%" autoplay></video>
+      <!--<canvas id="canvas" width="100%" height="100%"></canvas>-->
+      <!--<button v-on:click="snap">Snap Photo</button>-->
     </div>
   </v-ons-page>
 </template>
@@ -38,6 +43,27 @@
 
   export default {
     name: 'main',
+    methods: {
+      video: function (event) {
+        const video = document.getElementById('video');
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+          // Not adding `{ audio: true }` since we only want video now
+          navigator.mediaDevices.getUserMedia({video: true}).then(function (stream) {
+            console.log(video);
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+          });
+        }
+      },
+      snap: function (event) {
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const video = document.getElementById('video');
+
+        // Trigger photo take
+        context.drawImage(video, 0, 0, 640, 480);
+      }
+    },
     data () {
       return {
         bank: '농협',
