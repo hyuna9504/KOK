@@ -1,12 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var admin = require("firebase-admin");
-var serviceAccount = require('../firebase_config.json');
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://unithon-8bf36.firebaseio.com/"
-});
 
 var client_id = 'SywgbqwVSP4an161TdKS';
 var client_secret = 'DhTfuacMl_';
@@ -34,7 +28,6 @@ router.get('/auth', function(req, res, next) {
   request.get(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       req.session.token = body.access_token;
-      console.log(body.access_token);
       res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
       res.end(body);
     } else {
@@ -69,7 +62,6 @@ router.get('/member', function (req, res) {
    });
  });
 
-
 router.get('/add', function(req, res, next) {
   const newRef = admin.database().ref('users').push();
   const newKey = newRef.key;
@@ -98,8 +90,8 @@ router.post('/account', function(req, res, next) {
         accountNumber: req.body.accountNumber
       });
     })
-    .then((user) => {
-      res.status(200).json(user);
+    .then(() => {
+      res.status(200).json({ message: "success adding account info"});
     })
     .catch((err) => {
       res.status(400).json({ err_msg: err.message });
