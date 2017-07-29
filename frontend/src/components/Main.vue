@@ -28,7 +28,7 @@
 
       </div>
 
-      <button v-on:click="video" class="snap-btn"><img src="../assets/btCamera.png"></button>
+      <button v-on:click="video" class="snap-btn btn btn-primary"><img src="../assets/group12.png"></button>
       <!--<button v-on:click="video" class="snap-btn" v-if="active"><img src="../assets/btCamera.png"></button>-->
 
       <video id="video" width="100%" height="100%" autoplay></video>
@@ -155,6 +155,10 @@
     position: fixed;
     top: 550px;
     left: 140px;
+    width: 100px;
+    height: 100px;
+    background-color: #0058cd;
+    border-radius: 100px;
     z-index: 999;
   }
 </style>
