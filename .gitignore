@@ -11,3 +11,5 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+backend/firebase_config.json
