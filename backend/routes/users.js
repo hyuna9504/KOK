@@ -118,4 +118,12 @@ router.post('/account', function(req, res, next) {
     });
 });
 
+router.get('/session', function(req, res, next) {
+  if (req.session.userId) {
+    res.status(200).json({ message: "active!" })
+  } else {
+    res.status(400).json({ message: "inactive!" });
+  }
+});
+
 module.exports = router;
