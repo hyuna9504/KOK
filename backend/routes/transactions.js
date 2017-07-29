@@ -50,8 +50,35 @@ router.get('/:period', function(req, res, next) {
     });
 });
 
-// router.update('/', function(req, res, next) {
-//
-// });
+router.post('/update', function(req, res, next) {
+  const tid = req.body.id;
+  admin.database().ref('transactions').orderByChild('id').equalTo(tid).once('value')
+    .then((transaction) => {
+      if (transaction.val() === null) {
+        throw new Error("No matching transaction");
+      }
+      const vals = Object.keys(transaction.val())
+        .map((key) => transaction.val()[key]);
+      return vals[0];
+    })
+    .then((val) => {
+      const transactionObj = {
+        id: tid,
+        userId: val.userId,
+        seller: val.seller,
+        value: val.value,
+        regDate: val.regDate,
+        image: req.body.image,
+        keyword: req.body.keyword
+      };
+      return admin.database().ref('transactions').child(tid).set(transactionObj)
+    })
+    .then(() => {
+      res.status(200).json({ message: "success updating transaction info"});
+    })
+    .catch((err) => {
+      res.status(400).json({ err_msg: err.message });
+    });
+});
 
 module.exports = router;

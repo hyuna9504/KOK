@@ -92,15 +92,20 @@ router.get('/add', function(req, res, next) {
 });
 
 router.post('/account', function(req, res, next) {
-  const id = req.session.userId;
+  const id = "-KqCstYTIIxeecYJa8-n"; // req.session.userId;
   admin.database().ref('users').orderByChild('id').equalTo(id).once('value')
     .then((user) => {
       if (user.val() === null) {
         throw new Error("No matching user");
       }
-      const key = Object.keys(user.val());
-      return admin.database().ref('users').child(key[0]).set({
+      const vals = Object.keys(user.val())
+        .map((key) => user.val()[key]);
+      return vals[0];
+    })
+    .then((val) => {
+      return admin.database().ref('users').child(val.id).set({
         id: id,
+        email: val.email,
         bank: req.body.bank,
         accountNumber: req.body.accountNumber
       });
