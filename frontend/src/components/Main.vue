@@ -161,7 +161,6 @@
 
   .book {
     height: 100%;
-    border: solid #000000;
   }
 
   .snap-btn {
