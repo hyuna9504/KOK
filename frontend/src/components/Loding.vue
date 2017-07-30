@@ -48,6 +48,11 @@ export default {
         background-size: cover;
     }
     .msg {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
         width: 10em;
         height: 1em;
         font-size: 1.15em;
