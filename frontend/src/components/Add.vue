@@ -40,6 +40,7 @@
 
         // Trigger photo take
         context.drawImage(video, 0, 0, 640, 480);
+        window.location="http://localhost:8080/loding";
       }
     },
     data () {
