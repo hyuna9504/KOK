@@ -92,7 +92,7 @@ router.get('/add', function(req, res, next) {
 });
 
 router.post('/account', function(req, res, next) {
-  const id = "-KqCstYTIIxeecYJa8-n"; // req.session.userId;
+  const id = req.session.userId;
   admin.database().ref('users').orderByChild('id').equalTo(id).once('value')
     .then((user) => {
       if (user.val() === null) {

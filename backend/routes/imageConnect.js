@@ -8,7 +8,7 @@ var s3 = new AWS.S3();
 
 router.post('/upload', function(req, res, next) {
   //if (req.session.userId) {
-  var id = "KqCskCK_JnEnM2V4HM7";
+  var id = req.session.userId;
     var bucketName = 'unithon777';
     var keyName = 'images/' + id + '/' + Date.now() + '.png';
     var encondedImage = new Buffer(req.body.image.replace(/^data:image\/\w+;base64,/, ""), 'base64');
