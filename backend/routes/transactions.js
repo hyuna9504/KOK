@@ -3,7 +3,7 @@ var router = express.Router();
 var admin = require("firebase-admin");
 
 router.post('/', function(req, res, next) {
-  const id = req.session.userId; // Todo: Should be "req.session.userId" after naver login complete
+  const id = "-KqDgWeIo3SbKFZttTmF"; // Todo: Should be "req.session.userId" after naver login complete
   admin.database().ref('users').orderByChild('id').equalTo(id).once('value')
     .then((user) => {
       if (user.val() === null) {
@@ -30,7 +30,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-  const id = "-KqCstYTIIxeecYJa8-n"; // Todo: Should be "req.session.userId" after naver login complete
+  const id = req.session.userId; // Todo: Should be "req.session.userId" after naver login complete
   const now = Date.now();
   const defaultFrom = now - (7*24*60*60);
   const period = defaultFrom + ":" + now;

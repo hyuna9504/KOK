@@ -5,6 +5,8 @@
             <div class="msg">이미지 체크중…
             <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
             </div>
+<br/>
+		<router-link to="/main">@</router-link>
         </div>
     </div>
 </div>
@@ -12,6 +14,7 @@
 
 <script>
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+
 export default {
   components: {
     PulseLoader
@@ -27,6 +30,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <!-- modal.vue -->

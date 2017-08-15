@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
-    "start": "node build/dev-server.js",
+    "start": "forever start build/dev-server.js",
     "build": "node build/build.js",
     "build:watch": "cross-env WEBPACK_WATCH=true node build/build.js",
     "lint": "eslint --ext .js,.vue src"
@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "bootstrap-vue": "^0.18.0",
+    "forever": "^0.15.3",
     "onsenui": "~2.5.1",
     "vue": "^2.4.0",
     "vue-onsenui": "~2.1.0",

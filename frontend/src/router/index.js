@@ -8,6 +8,7 @@ import Select from '@/components/Select'
 import Add from '@/components/Add'
 import Add2 from '@/components/Add2'
 import Loding from '@/components/Loding'
+import Chart from '@/components/Chart'
 
 Vue.use(Router);
 Vue.use(VueOnsen);
@@ -45,6 +46,11 @@ export default new Router({
       path: '/loding',
       name: 'Loding',
       component: Loding
+    },
+    {
+      path: '/chart',
+      name: 'Chart',
+      component: Chart 
     }
   ]
 })

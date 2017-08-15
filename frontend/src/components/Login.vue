@@ -52,7 +52,7 @@
           .then(response => {
             console.log(response.status);
             if (response.status == 200) {
-              window.location="http://localhost:8080/main";
+              //window.location="http://localhost:8080/main";
             }
           });
       }

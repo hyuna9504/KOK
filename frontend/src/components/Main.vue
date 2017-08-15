@@ -2,7 +2,7 @@
   <v-ons-page class="main row">
     <div class="budget col">
       <div class="col btn">
-        <router-link to="/" class="chart"><img src="../assets/graph.png"></router-link>
+        <router-link to="/chart" class="chart"><img src="../assets/graph.png"></router-link>
         <router-link to="/" class="setting"><img src="../assets/setUp.png"></router-link>
       </div>
 
@@ -25,15 +25,51 @@
       </div>
 
       <div class="book col">
-        {{ board }}
+	<div class="card col">
+  		<div class="card-block">
+    			<blockquote class="card-blockquote">
+      				<div class="row picture"><img src="https://s3-us-west-2.amazonaws.com/unithon777/images/KqCskCK_JnEnM2V4HM7/coffe.jpg"/></div>
+				<div class="row title">카푸치노</div>
+				<div class="row money">-4,100원</div>
+    			</blockquote>
+  		</div>
+	</div>
+<div class="card col">
+  		<div class="card-block">
+    			<blockquote class="card-blockquote">
+      				<div class="row picture"><img src="https://s3-us-west-2.amazonaws.com/unithon777/images/KqCskCK_JnEnM2V4HM7/%E1%84%8F%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%B3.jpg"/></div>
+				<div class="row title">케이크</div>
+				<div class="row money">-5,300원</div>
+    			</blockquote>
+  		</div>
+	</div>
+<div class="card col">
+  		<div class="card-block">
+    			<blockquote class="card-blockquote">
+      				<div class="row picture"><img src="https://s3-us-west-2.amazonaws.com/unithon777/images/KqCskCK_JnEnM2V4HM7/%E1%84%89%E1%85%A2%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF.jpg"/></div>
+				<div class="row title">신발</div>
+				<div class="row money">-29,000원</div>
+    			</blockquote>
+  		</div>
+	</div>
+<div class="card col">
+  		<div class="card-block">
+    			<blockquote class="card-blockquote">
+      				<div class="row picture"><img src="https://s3-us-west-2.amazonaws.com/unithon777/images/KqCskCK_JnEnM2V4HM7/%E1%84%8B%E1%85%A6%E1%84%8F%E1%85%A9%E1%84%87%E1%85%A2%E1%86%A8.jpg"/></div>
+				<div class="row title">에코백</div>
+				<div class="row money">-30,000원</div>
+    			</blockquote>
+  		</div>
+	</div>
       </div>
 
-      <button v-on:click="video" class="snap-btn btn btn-primary"><img src="../assets/group12.png"></button>
+      <button class="snap-btn btn btn-primary"><router-link to="/loding"><img src="../assets/group12.png"></router-link></button>
       <!--<button v-on:click="video" class="snap-btn" v-if="active"><img src="../assets/btCamera.png"></button>-->
 
       <!--<video id="video" width="100%" height="100%" autoplay></video>-->
       <!--<canvas id="canvas" width="100%" height="100%"></canvas>-->
       <!--<button v-on:click="snap">Snap Photo</button>-->
+
     </div>
   </v-ons-page>
 </template>
@@ -96,6 +132,34 @@
   a {
     text-decoration: none;
   }
+  .card {
+    height: 100px;
+  }
+  .card-blockquote .row {
+ 	margin-top: -30px;
+	display: inline-block;
+  }
+  .card-blockquote .title {
+    width: 80px;
+    margin-left: 25px;
+    margin-top: -50px;
+    font-size: 20px;
+  }
+  .card-blockquote .money {
+    margin-left: 78px;
+    font-size: 15px;
+    color: gray;
+  }
+  .picture {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+  }
+  .picture img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+  }
 
   .main {
     overflow-x: hidden;
@@ -113,7 +177,7 @@
 
   .budget .btn {
     float: right;
-    top: 20px;
+    top: 10px;
     left: 130px;
   }
 
@@ -122,7 +186,7 @@
   }
 
   .budget .money {
-    top: 50px;
+    top: 30px;
     color: #ffffff;
   }
 
@@ -161,6 +225,8 @@
   }
 
   .history .date .today {
+    margin-top: 7px;
+    margin-left: 8px;
     font-size: 13px;
     color: rgb(102, 102, 102);
   }
